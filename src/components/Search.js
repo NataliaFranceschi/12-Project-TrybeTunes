@@ -30,7 +30,6 @@ class Search extends React.Component {
       { loading: true },
       async () => {
         const resposta = await searchAlbumsAPI(artist);
-        console.log(resposta);
         this.setState({
           albums: [...resposta],
           loading: false,

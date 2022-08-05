@@ -89,7 +89,7 @@ class Search extends React.Component {
           Pesquisar
 
         </button>
-        <span data-testid="header-user-name">
+        <span>
           {loading ? 'Carregando...' : this.searchResult()}
         </span>
       </div>

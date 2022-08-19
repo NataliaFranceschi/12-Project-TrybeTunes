@@ -1,0 +1,66 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+
+.searchResult {
+    color: $primary-color;
+    font-size: 1.4em;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    width: 100%;
+
+    input {
+        padding: 5px;
+        width: 300px;
+        border-radius: $borders;
+        border: $input-border;
+        box-shadow: $shadowing;
+        outline: 0;
+    }
+    
+    button {
+        background-color: $button-color;
+        margin-left: 10px;
+        color: $white-color;
+        border-radius: $borders;
+        box-shadow: $shadowing;
+    }
+}
+
+.albumSearch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+        @include link;
+        color: $text-color;
+    };
+
+    li {
+        @include column;
+        align-items: center;
+        height: 300px;
+        width: 200px;
+        justify-content: flex-start;
+        margin: 10px;
+        box-shadow: $shadowing;
+
+        img {
+            width: 100%;
+        }
+
+        span {
+            margin: auto;
+        }
+    }
+
+}

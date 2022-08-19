@@ -1,0 +1,11 @@
+@use 'variables' as *;
+
+.loading {
+    display: flex;
+    color: $primary-color;
+    font-size: 80px;
+    justify-content: center;
+    height: 70vh;
+    align-content: center;
+
+}

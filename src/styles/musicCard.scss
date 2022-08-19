@@ -1,0 +1,20 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.musics {
+    @include column;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.music {
+    margin: 15px;
+    display: flex;
+
+    svg {
+        margin-top: 8px;
+        font-size: 35px;
+        margin-left: 10px;
+        color: $secundary-color;
+    }
+}

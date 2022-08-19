@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Header from './Header';
+import '../styles/search.scss';
+import Loading from './Loading';
 
 class Search extends React.Component {
   constructor() {
@@ -45,22 +47,26 @@ class Search extends React.Component {
     if (searchArtist !== '') {
       return (
         <div>
-          <span>
+          <span className="searchResult">
             {albums.length !== 0
               ? `Resultado de álbuns de:
             ${searchArtist}` : 'Nenhum álbum foi encontrado'}
           </span>
-          <ul>
+          <ul className="albumSearch">
             {albums.map((album, index) => (
-              <li key={ index }>
-                {album.collectionName}
-                <Link
-                  data-testid={ `link-to-album-${album.collectionId}` }
-                  to={ `album/${album.collectionId}` }
-                >
-                  Ver Álbum
-                </Link>
-              </li>
+              <Link
+                key={ index }
+                data-testid={ `link-to-album-${album.collectionId}` }
+                to={ `album/${album.collectionId}` }
+              >
+                <li>
+                  <img
+                    src={ album.artworkUrl100.replace('100x100bb', '1000x1000bb') }
+                    alt={ album.collectionName }
+                  />
+                  <span>{album.collectionName}</span>
+                </li>
+              </Link>
             ))}
           </ul>
         </div>);
@@ -72,25 +78,28 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <label htmlFor="artist">
-          <input
-            data-testid="search-artist-input"
-            type="text"
-            value={ artist }
-            onChange={ this.onInputChange }
-          />
-        </label>
-        <button
-          data-testid="search-artist-button"
-          type="button"
-          disabled={ isDisabled }
-          onClick={ this.handleSearchButton }
-        >
-          Pesquisar
+        <div className="search">
+          <label htmlFor="artist">
+            <input
+              data-testid="search-artist-input"
+              type="text"
+              value={ artist }
+              onChange={ this.onInputChange }
+              placeholder="Nome do artista/banda"
+            />
+          </label>
+          <button
+            data-testid="search-artist-button"
+            type="button"
+            disabled={ isDisabled }
+            onClick={ this.handleSearchButton }
+          >
+            Pesquisar
 
-        </button>
+          </button>
+        </div>
         <span>
-          {loading ? 'Carregando...' : this.searchResult()}
+          {loading ? <Loading /> : this.searchResult()}
         </span>
       </div>
     );

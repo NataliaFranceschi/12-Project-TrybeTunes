@@ -1,0 +1,37 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.profile {
+  @include column;
+  width: 100%;
+  margin-left: 40%;
+  color: $text-color;
+
+  svg {
+    @include icon;
+  }
+
+  p{
+    max-width: 300px;
+  }
+  span {
+    font-weight: bold;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin: 12px;
+  }
+
+  a {
+    @include link;
+    border-radius: $borders;
+    border: 2px solid $button-color;
+    color: $button-color;
+    width: 100px;
+    height: 30px;
+    margin-top: 25px;
+}
+}

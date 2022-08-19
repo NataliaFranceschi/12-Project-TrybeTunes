@@ -1,0 +1,18 @@
+@mixin column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin link {
+    text-decoration: none;
+    text-align: center;
+}
+
+
+@mixin icon {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@300&display=swap');

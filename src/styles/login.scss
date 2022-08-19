@@ -1,0 +1,41 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.mainLogin {
+    @include column;
+    align-items: center;
+    height: 100vh;
+    background-color: $bg-color;
+
+ img {
+    margin-bottom: 50px
+ }
+
+ form {
+    @include column;
+    align-items: center;
+    width: 50%;
+    height: 40%;
+    background-color: $white-color;
+    box-shadow: $shadowing;
+    border-radius: 10px;
+
+    input{
+        margin-bottom: 15px;
+        width: 60%;
+        padding: 4px;
+        border: $input-border;
+        border-radius: $borders;
+        outline: 0;
+    }
+
+    button{
+        background-color: $button-color;
+        width: 60%;
+        padding: 4px;
+        box-shadow: $shadowing;
+        color: $white-color;
+        border-radius: $borders;
+    }
+ }
+}

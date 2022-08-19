@@ -1,0 +1,39 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.profileForm {
+    @include column;
+    color: $text-color;
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    
+    img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+    }
+
+    svg {
+        @include icon;
+      }
+
+    label {
+        margin-bottom: 10px;
+    }
+
+    input, textarea {
+        border: $input-border;
+        border-radius: $borders;
+        width: 100%;
+        outline: 0;
+    }
+
+    button {
+        color: $white-color;
+        background-color: $button-color;
+        border-radius: $borders;
+        margin: 5px;
+    }
+}

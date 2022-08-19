@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import Header from './Header';
 import Loading from './Loading';
 import { getUser } from '../services/userAPI';
+import '../styles/profile.scss';
 
 class Profile extends React.Component {
   constructor() {
@@ -31,11 +33,17 @@ class Profile extends React.Component {
     if (userInformation !== undefined) {
       const { name, email, image, description } = userInformation;
       return (
-        <div>
-          <img data-testid="profile-image" src={ image } alt={ name } width={ 200 } />
+        <div className="profile">
+          { image === ''
+            ? <FaUserCircle />
+            : <img data-testid="profile-image" src={ image } alt={ name } />}
+          <span>Nome:</span>
           <p>{name}</p>
+          <span>E-mail:</span>
           <p>{email}</p>
+          <span>Descrição:</span>
           <p>{description}</p>
+          <Link to="/profile/edit">Editar perfil</Link>
         </div>
       );
     }
@@ -48,7 +56,6 @@ class Profile extends React.Component {
         <Header />
         {loading ? <Loading />
           : this.information()}
-        <Link to="/profile/edit">Editar perfil</Link>
       </div>
     );
   }

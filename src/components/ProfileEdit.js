@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaUserCircle } from 'react-icons/fa';
 import Header from './Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
+import '../styles/profileEdit.scss';
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -65,8 +67,23 @@ class ProfileEdit extends React.Component {
       <div data-testid="page-profile-edit">
         <Header />
         {loading ? <Loading /> : (
-          <form>
+          <form className="profileForm">
+            { image === ''
+              ? <FaUserCircle />
+              : <img data-testid="profile-image" src={ image } alt={ name } />}
+            <label htmlFor="image">
+              Imagem:
+              <input
+                data-testid="edit-input-image"
+                type="text"
+                value={ image }
+                id="image"
+                onChange={ this.onInputChange }
+                placeholder="Insira uma url"
+              />
+            </label>
             <label htmlFor="name">
+              Nome:
               <input
                 data-testid="edit-input-name"
                 type="text"
@@ -76,6 +93,7 @@ class ProfileEdit extends React.Component {
               />
             </label>
             <label htmlFor="email">
+              E-mail:
               <input
                 data-testid="edit-input-email"
                 type="email"
@@ -85,21 +103,15 @@ class ProfileEdit extends React.Component {
               />
             </label>
             <label htmlFor="description">
-              <input
+              Descrição:
+              <textarea
                 data-testid="edit-input-description"
                 type="text"
                 value={ description }
                 id="description"
                 onChange={ this.onInputChange }
-              />
-            </label>
-            <label htmlFor="image">
-              <input
-                data-testid="edit-input-image"
-                type="text"
-                value={ image }
-                id="image"
-                onChange={ this.onInputChange }
+                cols="30"
+                rows="4"
               />
             </label>
             <button

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import Loading from './Loading';
+import '../styles/musicCard.scss';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -16,32 +18,36 @@ class MusicCard extends React.Component {
     if (loading) return <Loading />;
     return (
       <div>
-        <ul>
+        <ul className="musics">
           {musics.map((music, index) => (
             <li key={ index }>
-              <p>{music.trackName}</p>
-              <audio
-                data-testid="audio-component"
-                src={ music.previewUrl }
-                controls
-              >
-                <track kind="captions" />
-                O seu navegador não suporta o elemento
-                {' '}
-                {' '}
-                <code>audio</code>
-                .
-              </audio>
-              <label htmlFor={ music.trackId }>
-                Favorita
-                <input
-                  type="checkbox"
-                  data-testid={ `checkbox-music-${music.trackId}` }
-                  id={ music.trackId }
-                  onChange={ () => handleChange(music) }
-                  checked={ checkedFavorite(music) }
+              <span className="artist">{`${music.artistName} - `}</span>
+              <span>{music.trackName}</span>
+              <div className="music">
+                <img
+                  src={ music.artworkUrl100.replace('100x100bb', '1000x1000bb') }
+                  alt={ music.collectionName }
                 />
-              </label>
+                <audio
+                  data-testid="audio-component"
+                  src={ music.previewUrl }
+                  controls
+                >
+                  <track kind="captions" />
+                  O seu navegador não suporta o elemento
+                  {' '}
+                  {' '}
+                  <code>audio</code>
+                  .
+                </audio>
+                { checkedFavorite(music) ? <AiFillHeart
+                  id={ music.trackId }
+                  onClick={ () => handleChange(music) }
+                /> : <AiOutlineHeart
+                  id={ music.trackId }
+                  onClick={ () => handleChange(music) }
+                />}
+              </div>
             </li>
           ))}
         </ul>

@@ -1,0 +1,39 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.album {
+    display: flex;
+    justify-content: space-evenly;
+    color: $text-color;
+    padding-top: 50px;
+    width: 100%;
+
+    .albumInformation {
+        text-align: center;
+        @include column;
+        align-items: center;
+        height: 400px;
+        width: 300px;
+        justify-content: flex-start;
+        margin: 10px;
+        box-shadow: $shadowing;
+        margin-left: auto;
+        margin-right: auto;
+
+        img {
+            width: 100%;
+        }
+
+    }
+
+    .albumMusics {
+        width: 50%;
+        img {
+            display: none;
+        }
+        
+        .artist {
+            display: none;
+        }
+    }
+}

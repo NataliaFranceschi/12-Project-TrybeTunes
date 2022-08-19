@@ -1,0 +1,81 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.mainHeader {
+    @include column;
+    align-items: center;
+    
+    .header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        background-color: $primary-color;
+        box-shadow: $shadowing;
+        padding: 10px;
+        align-items: center;
+
+        span {
+            color: $terciary-color;
+        }
+
+        img {
+            width: 120px;
+            padding-left: 10px;
+        }
+
+        .user {
+            display: flex;
+            height: 30px;
+            width: auto;
+            border-radius: 50px;
+            background-color: $white-color;
+            align-items: center;
+            justify-content: space-between;
+
+            svg {
+                font-size: 28px;
+                margin-left: 2px;
+                color: $terciary-color;
+            }
+
+            p {
+                margin-right: 20px;
+                margin-left: 20px;
+                font-size: 0.8em;
+            }
+
+            img {
+                width: 28px;
+                height: 28px;
+                padding-left: 2px;
+                border-radius: 100%;
+            }
+        }
+    }
+
+    nav{
+        display: flex;
+        width: 100%;
+        box-shadow: $shadowing;
+        background-color: $nav-color;
+
+        a{
+            @include link;
+            font-weight: bold;
+            padding: 10px;
+            font-size: 25px;
+            flex-grow: 1;
+           
+        }
+    }
+}
+
+.bgGreen {
+    background-color: $secundary-color;
+    color: $white-color;
+}
+
+.bgColor {
+    color: $terciary-color;
+}
+

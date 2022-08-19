@@ -3,6 +3,7 @@ import Header from './Header';
 import Loading from './Loading';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import MusicCard from './MusicCard';
+import '../styles/favorites.scss';
 
 class Favorites extends React.Component {
   constructor() {
@@ -64,11 +65,13 @@ class Favorites extends React.Component {
       return (
         <div data-testid="page-favorites">
           <Header />
-          <MusicCard
-            { ...this.state }
-            checkedFavorite={ this.checkedFavorite }
-            handleChange={ this.handleChange }
-          />
+          <div className="favorites">
+            <MusicCard
+              { ...this.state }
+              checkedFavorite={ this.checkedFavorite }
+              handleChange={ this.handleChange }
+            />
+          </div>
         </div>
       );
     }

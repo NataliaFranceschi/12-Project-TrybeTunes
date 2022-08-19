@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import { getUser } from '../services/userAPI';
-import Loading from './Loading';
+import '../styles/header.scss';
+import TrybeTunesHeader from '../TrybeTunesHeader.png';
 
 class Header extends React.Component {
   constructor() {
@@ -9,6 +11,7 @@ class Header extends React.Component {
     this.state = {
       loading: false,
       user: '',
+      image: '',
     };
   }
 
@@ -20,20 +23,58 @@ class Header extends React.Component {
         this.setState({
           loading: false,
           user: resposta.name,
+          image: resposta.image,
         });
       },
     );
   }
 
-  render() {
-    const { user, loading } = this.state;
+  userName = () => {
+    const { user, image } = this.state;
     return (
-      <div data-testid="header-component">
-        {loading ? <Loading /> : <p data-testid="header-user-name">{user}</p>}
+      <div className="user">
+        { image === ''
+          ? <FaUserCircle />
+          : <img data-testid="profile-image" src={ image } alt={ user } />}
+        <p data-testid="header-user-name">{user}</p>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
+    return (
+      <div data-testid="header-component" className="mainHeader">
+        <div className="header">
+          <img src={ TrybeTunesHeader } alt="TrybeTunesLogo" />
+          {loading ? <span>Carregando...</span>
+            : this.userName()}
+        </div>
         <nav>
-          <Link data-testid="link-to-search" to="/search">Search</Link>
-          <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-          <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+          <NavLink
+            data-testid="link-to-search"
+            to="/search"
+            className={ (isActive) => (isActive ? 'bgGreen' : 'bgColor') }
+          >
+            Procurar
+
+          </NavLink>
+          <NavLink
+            data-testid="link-to-favorites"
+            to="/favorites"
+            className={ (isActive) => (isActive ? 'bgGreen' : 'bgColor') }
+          >
+            Favoritos
+
+          </NavLink>
+          <NavLink
+            data-testid="link-to-profile"
+            to="/profile"
+            className={ (isActive) => (isActive ? 'bgGreen' : 'bgColor') }
+          >
+            Perfil
+
+          </NavLink>
         </nav>
       </div>
     );

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from './Loading';
+import TrybeTunesLogin from '../TrybeTunesLogin.png';
+import '../styles/login.scss';
 
 class Login extends React.Component {
   constructor() {
@@ -41,17 +43,17 @@ class Login extends React.Component {
     const { isDisabled, name, loading } = this.state;
     if (loading) return <Loading />;
     return (
-      <div data-testid="page-login">
+
+      <div data-testid="page-login" className="mainLogin">
+        <img src={ TrybeTunesLogin } alt="TrybeTunesLogo" />
         <form>
-          <label htmlFor="name">
-            Nome:
-            <input
-              type="text"
-              data-testid="login-name-input"
-              onChange={ this.onInputChange }
-              value={ name }
-            />
-          </label>
+          <input
+            type="text"
+            placeholder="Nome:"
+            data-testid="login-name-input"
+            onChange={ this.onInputChange }
+            value={ name }
+          />
           <button
             type="button"
             data-testid="login-submit-button"

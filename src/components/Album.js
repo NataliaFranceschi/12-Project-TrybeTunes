@@ -4,6 +4,8 @@ import Header from './Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from './MusicCard';
 import { getFavoriteSongs, addSong, removeSong } from '../services/favoriteSongsAPI';
+import '../styles/album.scss';
+import Loading from './Loading';
 
 class Album extends React.Component {
   constructor() {
@@ -72,18 +74,26 @@ class Album extends React.Component {
     const { albumInformation } = this.state;
     if (albumInformation !== undefined) {
       return (
-        <div>
-          <p data-testid="artist-name">
-            {albumInformation.artistName}
-          </p>
-          <p data-testid="album-name">
-            {albumInformation.collectionName}
-          </p>
-          <MusicCard
-            { ...this.state }
-            checkedFavorite={ this.checkedFavorite }
-            handleChange={ this.handleChange }
-          />
+        <div className="album">
+          <div className="albumInformation">
+            <img
+              src={ albumInformation.artworkUrl100.replace('100x100bb', '1000x1000bb') }
+              alt={ albumInformation.collectionName }
+            />
+            <p data-testid="album-name">
+              {albumInformation.collectionName}
+            </p>
+            <p data-testid="artist-name">
+              {albumInformation.artistName}
+            </p>
+          </div>
+          <div className="albumMusics">
+            <MusicCard
+              { ...this.state }
+              checkedFavorite={ this.checkedFavorite }
+              handleChange={ this.handleChange }
+            />
+          </div>
         </div>
       );
     }
@@ -94,7 +104,7 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <section>{loading ? 'Carregando...' : this.Card()}</section>
+        <section>{loading ? <Loading /> : this.Card()}</section>
       </div>
     );
   }

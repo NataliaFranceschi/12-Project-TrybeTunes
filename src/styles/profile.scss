@@ -8,6 +8,7 @@
   color: $text-color;
 
   svg {
+    margin-top: 20px;
     @include icon;
   }
 

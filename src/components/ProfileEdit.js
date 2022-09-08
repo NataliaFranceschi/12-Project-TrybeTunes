@@ -56,7 +56,7 @@ class ProfileEdit extends React.Component {
           loading: false,
         });
         const { history } = this.props;
-        history.push('/profile');
+        history.push('/12-Project-TrybeTunes/profile');
       },
     );
   }

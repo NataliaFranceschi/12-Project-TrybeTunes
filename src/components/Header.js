@@ -53,7 +53,7 @@ class Header extends React.Component {
         <nav>
           <NavLink
             data-testid="link-to-search"
-            to="/search"
+            to="/12-Project-TrybeTunes/search"
             className={ (isActive) => (isActive ? 'bgGreen' : 'bgColor') }
           >
             Procurar
@@ -61,7 +61,7 @@ class Header extends React.Component {
           </NavLink>
           <NavLink
             data-testid="link-to-favorites"
-            to="/favorites"
+            to="/12-Project-TrybeTunes/favorites"
             className={ (isActive) => (isActive ? 'bgGreen' : 'bgColor') }
           >
             Favoritos
@@ -69,7 +69,7 @@ class Header extends React.Component {
           </NavLink>
           <NavLink
             data-testid="link-to-profile"
-            to="/profile"
+            to="/12-Project-TrybeTunes/profile"
             className={ (isActive) => (isActive ? 'bgGreen' : 'bgColor') }
           >
             Perfil

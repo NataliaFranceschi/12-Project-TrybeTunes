@@ -34,7 +34,7 @@ class Login extends React.Component {
           loading: false,
         });
         const { history } = this.props;
-        history.push('/search');
+        history.push('/12-Project-TrybeTunes/search');
       },
     );
   }

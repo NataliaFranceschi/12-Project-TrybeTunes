@@ -64,3 +64,13 @@
     }
 
 }
+
+@media screen and (max-width: 720px) {
+    .search{
+        padding: 20px;
+
+        input{
+            width: 100%;
+        }
+    }
+}

@@ -18,3 +18,9 @@
         color: $secundary-color;
     }
 }
+
+@media screen and (max-width: 720px) {
+    .musics{
+        padding: 10px;
+    }
+}

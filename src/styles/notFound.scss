@@ -29,3 +29,19 @@
     }
 
 }
+
+@media screen and (max-width: 720px) {
+    .notFound{
+        div {
+            flex-direction: column;
+            
+            span{
+                font-size: 100px;
+            }
+
+            p {
+                margin: auto;
+            }
+        }
+    }
+}

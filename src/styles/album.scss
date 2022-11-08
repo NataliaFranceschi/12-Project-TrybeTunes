@@ -37,3 +37,16 @@
         }
     }
 }
+
+@media screen and (max-width: 720px) {
+    .album {
+        flex-direction: column;
+
+        .albumMusics{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    
+}
